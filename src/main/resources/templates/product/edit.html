@@ -1,0 +1,81 @@
+<!DOCTYPE html >
+<html layout:decorator="shared/homelayout"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<th:block layout:fragment="header">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/edit.css}" />
+	</th:block>
+	
+	<th:block layout:fragment="content">
+			
+		<h2>Product Create</h2> <br/>
+	
+		<form class="form-horizontal" action="/product" method="POST" th:object="${product}">
+		      <input type="hidden" name="id" th:value="${product.productId}" />
+
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="productNumber">Number:</label>
+		     <label th:if="${#fields.hasErrors('productNumber')}" th:errors="*{productNumber}" class="validation-message"></label>
+		    <div class="col-sm-10">
+		      <input type="number" class="form-control" id="productNumber" name="productNumber"  th:value="${product.productNumber}">
+		    </div>
+		  </div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="name">Name:</label>
+			<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="validation-message"></label>
+			<div class="col-sm-10">
+				<input class="form-control" id="name" name="name"  th:value="${product.name}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="unitPrice">Unit Price:</label>
+			<label th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}" class="validation-message"></label>
+			<div class="col-sm-10">
+				<input type="number" class="form-control" id="unitPrice" name="unitPrice"  th:value="${product.unitPrice}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="dateSupplied">date Supplied:</label>
+			<label th:if="${#fields.hasErrors('dateSupplied')}" th:errors="*{dateSupplied}" class="validation-message"></label>
+			<div class="col-sm-10">
+				<input type="date" class="form-control" id="dateSupplied" name="dateSupplied"  th:value="${product.dateSupplied}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="unitPrice">Quantity In Stock:</label>
+			<label th:if="${#fields.hasErrors('quantityInStock')}" th:errors="*{quantityInStock}" class="validation-message"></label>
+			<div class="col-sm-10">
+				<input type="number" class="form-control" id="quantityInStock" name="quantityInStock"  th:value="${product.quantityInStock}">
+			</div>
+		</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="suppliers">Suppliers:</label>
+				<label th:if="${#fields.hasErrors('supplier')}" th:errors="*{supplier}"
+					   class="validation-message"></label>
+				<div class="col-sm-10">
+
+					<select class="form-control" th:field="${product.supplier}"  id="suppliers" name="supplier">
+
+						<option th:each="operator : ${suppliers}" th:value="${operator.supplierId}" th:text="${operator.name}"></option>
+					</select>
+
+
+
+				</div>
+			</div>
+		  <div class="form-group"> 
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-default">Submit</button>
+		    </div>
+		  </div>
+		</form>
+		<br/>
+		
+		<a href="products">List</a>
+	</th:block>
+	
+	<th:block layout:fragment="footer">
+	</th:block>
+	
+</body>
+</html>

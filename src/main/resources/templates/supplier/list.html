@@ -1,0 +1,33 @@
+<!DOCTYPE html >
+<html layout:decorator="shared/homelayout"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<th:block layout:fragment="header">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/list.css}" />
+	</th:block>
+	
+	<th:block layout:fragment="content">
+		<h2>Supplier List</h2> <br/>
+		<a href="/supplier">Create New</a>
+		<table class="table table-striped">
+			<thead>
+				<th>Number</th>
+				<th>Name</th>
+				<th>Phone Number</th>
+			</thead>
+			<tbody>
+				<tr th:each="supplier : ${suppliers}">
+					<td th:text="${supplier.supplierNumber}"></td>
+					<td th:text="${supplier.name}"></td>
+					<td th:text="${supplier.contactPhoneNumber}"></td>
+
+				</tr>
+			</tbody>
+		</table>
+	</th:block>
+	
+	<th:block layout:fragment="footer">
+	</th:block>
+	
+</body>
+</html>

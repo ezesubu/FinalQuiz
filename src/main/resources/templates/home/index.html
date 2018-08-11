@@ -1,0 +1,20 @@
+<!DOCTYPE html >
+<html layout:decorator="shared/homelayout"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<th:block layout:fragment="header">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+	</th:block>
+	
+	<th:block layout:fragment="content">
+
+		<h2>Welcome to MUM's Local grocery Store!</h2>
+		<h3>We accept Donations :P!</h3>
+		<h4>Gracias a todos los que han estado en nuestro camino y nos han ayudado a no perderlo!</h4>
+	</th:block>
+	
+	<th:block layout:fragment="footer">
+	</th:block>
+	
+</body>
+</html>

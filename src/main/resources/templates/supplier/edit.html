@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html layout:decorator="shared/homelayout"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<th:block layout:fragment="header">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/edit.css}" />
+	</th:block>
+	
+	<th:block layout:fragment="content">
+			
+		<h2>Supplier Create</h2> <br/>
+	
+		<form class="form-horizontal" action="/supplier" method="POST" th:object="${supplier}">
+		      <input type="hidden" name="id" th:value="${supplier.supplierId}" />
+
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="supplierNumber">Number:</label>
+		     <label th:if="${#fields.hasErrors('supplierNumber')}" th:errors="*{supplierNumber}" class="validation-message"></label>
+		    <div class="col-sm-10">
+		      <input type="number" class="form-control" id="supplierNumber" name="supplierNumber"  th:value="${supplier.supplierNumber}">
+		    </div>
+		  </div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="name">Name:</label>
+			<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="validation-message"></label>
+			<div class="col-sm-10">
+				<input class="form-control" id="name" name="name"  th:value="${supplier.name}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="contactPhoneNumber">Contact Phone Number:</label>
+			<label th:if="${#fields.hasErrors('contactPhoneNumber')}" th:errors="*{contactPhoneNumber}" class="validation-message"></label>
+			<div class="col-sm-10">
+				<input class="form-control" id="contactPhoneNumber" name="contactPhoneNumber"  th:value="${supplier.contactPhoneNumber}">
+			</div>
+		</div>
+		  <div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+			  <button type="submit" class="btn btn-default">Submit</button>
+			</div>
+		  </div>
+		</form>
+		<br/>
+		
+		<a href="/suppliers">List</a>
+	</th:block>
+	
+	<th:block layout:fragment="footer">
+	</th:block>
+	
+</body>
+</html>
